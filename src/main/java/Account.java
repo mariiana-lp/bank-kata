@@ -2,30 +2,18 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Account {
-    private List<Integer> credit;
-    private List<Integer> debit;
-    private List<Integer> balance;
-    private List<LocalDate> date;
+    Movements movements = new Movements();
 
     void deposit(int amountOf) {
-        credit.add(amountOf);
-        date.add(LocalDate.now());
+        movements.credit(amountOf, LocalDate.now() );
     }
 
     void withdraw(int amountOf){
-        debit.add(amountOf);
-        date.add(LocalDate.now());
+        movements.debit(amountOf, LocalDate.now());
     }
 
-
-
-    String printStatements() {
-            return "Account{" +
-                    "credit=" + credit +
-                    ", debit=" + debit +
-                    ", balance=" + balance +
-                    ", date=" + date +
-                    '}';
+    Integer printStatements(){
+        return movements.getBalance();
     }
 
 }
